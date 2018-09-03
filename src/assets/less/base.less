@@ -1,0 +1,215 @@
+@blue: #1875F0;
+@light_blue:#19ADF8;
+@dark_blue:#2856B6;
+@mask_blue: #D1E3FC;
+@men_blue:#E8F1FD;
+
+@green:#50D166;
+@light_green:#63DA38;
+@dark_green:#008947;
+@mask_green: #E6F9E9;
+
+@rose_red:#FE2A68;
+@dark_red:#F13A30;
+@mask_red: #FCD8D6;
+
+@orange:#FE9F30;
+@dark_orange:#F18F1C;
+@mask_orange:#F9EFE4;
+
+@bg_gray:#FAFAFA;
+
+@mask_gray: #d9d9d9;
+@light_gray: #999;
+@gray: #666;
+@dark_gray: #333;
+@border_line:#F0F0F0;
+@me_gray: #B3B3B3;
+
+@label_size: 12px;
+@value_size: 14px;
+
+
+
+@b_gray: #dddddd;
+@dark_red:#FF5555;
+
+@f_goast: #888888;
+@f_dark: #3c3d41;
+@hover_blue:#517edc;
+@b_d1: 1px solid #d1d1d1;
+@back_gray:#d1d1d1;
+@light_yellow:#FFCB30;
+@light_green:#6CBF0D;
+
+.box-shadow(@b) {
+    -webkit-box-shadow: @b; 
+    -moz-box-shadow: @b; 
+    box-shadow: @b; 
+}
+
+.opacity(@factor) {
+    @iefactor: @factor*100;
+    filter: ~"alpha(opacity=@{iefactor})";
+    opacity: @factor;
+}
+
+// autofix
+.borderRadius(@radius:4px) { 
+    -moz-border-radius: @radius; 
+    -webkit-border-radius: @radius; 
+    border-radius: @radius; 
+} 
+
+.ellipsis(){
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.noselect() {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.transition(@attribute:all,@time:.2s){
+    transition: @attribute @time;
+    -moz-transition: @attribute @time; /* Firefox 4 */
+    -webkit-transition: @attribute @time; /* Safari 和 Chrome */
+    -o-transition: @attribute @time;
+}
+
+ // Flexbox
+.flex-block() {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+.flex-inline() {
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+}
+.flex-flow(@direction: row, @wrap: nowrap) {
+    -moz-flex-flow: @direction @wrap;
+    -ms-flex-direction: @direction;
+    -ms-flex-wrap: @wrap;
+    -webkit-flex-flow: @direction @wrap;
+    flex-flow: @direction @wrap;
+}
+.align-content(@alignment) {
+    -moz-align-content: @alignment;
+    -ms-align-content: @alignment;
+    -webkit-align-content: @alignment;
+    align-content: @alignment;
+}
+.flex-direction(@direction: row) {
+    -webkit-flex-direction: @direction;
+    -moz-flex-direction: @direction;
+    -ms-flex-direction: @direction;
+    flex-direction: @direction;
+}
+.flex-wrap(@wrap: nowrap) {
+    -webkit-flex-wrap: @wrap;
+    -moz-flex-wrap: @wrap;
+    -ms-flex-wrap: @wrap;
+    flex-wrap: @wrap;
+}
+.justify-content(@justification) {
+    -webkit-box-pack: @justification;
+    -moz-box-pack: @justification;
+    -ms-flex-pack: replace(@justification, "flex-", "");
+    -webkit-justify-content: @justification;
+    justify-content: @justification;
+}
+.align-items(@mode) {
+    -webkit-box-align: @mode;
+    -moz-box-align: @mode;
+    -ms-flex-align: @mode;
+    -webkit-align-items: @mode;
+    align-items: @mode;
+}
+.flex(@args: none) {
+    -webkit-flex: @args;
+    -moz-flex: @args;
+    -ms-flex: @args;
+    -webkit-flex: @args;
+    flex: @args;
+
+}
+.order(@order: 0) {
+    -webkit-box-ordinal-group: @order;
+    -moz-box-ordinal-group: @order;
+    -ms-box-ordinal-group: @order;
+    -ms-flex-order: @order;
+    -webkit-order: @order;
+    -moz-order: @order;
+    -ms-order: @order;
+    order: @order;
+}
+.flex-grow(@grow: 1) {
+    -webkit-flex-grow: @grow;
+    -moz-flex-grow: @grow;
+    -ms-flex-grow: @grow;
+    -webkit-flex-grow: @grow;
+    flex-grow: @grow;
+}
+.flex-shrink(@shrink: 1) {
+    -webkit-flex-shrink: @shrink;
+    -moz-flex-shrink: @shrink;
+    -ms-flex-shrink: @shrink;
+    -webkit-flex-shrink: @shrink;
+    flex-shrink: @shrink;
+}
+.flex-basis(@basis: auto) {
+    -webkit-flex-basis: @basis;
+    -moz-flex-basis: @basis;
+    -ms-flex-basis: @basis;
+    -webkit-flex-basis: @basis;
+    flex-basis: @basis;
+}
+.align-self(@align: auto) {
+    -webkit-align-self: @align;
+    -moz-align-self: @align;
+    -ms-align-self: @align;
+    -webkit-align-self: @align;
+    align-self: @align;
+}
+
+.scale(@s :1){
+    transform: scale(@s,@s);
+  -webkit-transform: scale(@s,@s);
+  -moz-transform: scale(@s,@s);
+  -o-transform: scale(@s,@s);
+  -ms-transform: scale(@s,@s);
+}
+
+.rotate(@deg:0deg){
+    transform: rotate(@deg);
+    -ms-transform: rotate(@deg);
+    /* IE 9 */
+    -moz-transform: rotate(@deg);
+    /* Firefox */
+    -webkit-transform: rotate(@deg);
+    /* Safari 和 Chrome */
+    -o-transform: rotate(@deg);
+}
+
+.placeholder(@rules) {
+    
+        &::-webkit-input-placeholder {
+            @rules();
+        }
+        &:-moz-placeholder {
+            @rules();
+        }
+        &::-moz-placeholder {
+            @rules();
+        }
+        &:-ms-input-placeholder {
+            @rules();
+        }
+    }

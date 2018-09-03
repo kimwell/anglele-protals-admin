@@ -1,0 +1,29 @@
+{
+    "isCheck": false,
+    "isSave": false,
+    "data": {
+        "ironTypeId": "",
+        "ironTypeName": "",
+        "materialId": "",
+        "materialName": "",
+        "surfaceId": "",
+        "surfaceName": "",
+        "proPlacesId": [],
+        "locationId": "",
+        "locationName": "",
+        "remark": "",
+        "length": "",
+        "width": "",
+        "height": "",
+        "specifications": "",
+        "tolerance": "",
+        "numbers": "",
+        "weights": "",
+        "timeLimit": "86400000",
+        "numberUnitId": "",
+        "numberUnit": "",
+        "weightUnitId": "",
+        "weightUnit": "",
+        "appFlag": "1"
+    }
+}
