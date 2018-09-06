@@ -2,29 +2,7 @@
   <div>
     <Card title="广告位管理">
       <Button slot="extra" type="success" @click="openModel(false)">新增广告位</Button>
-      <!-- <Form :mode="pageApi" :label-width="90" inline>
-          <FormItem label="标题：">
-            <Input type="text" v-model="pageApi.title" placeholder="请输入..."></Input>
-          </FormItem>
-          <FormItem label="广告位代码：">
-            <Input type="text" v-model="pageApi.placeCode" placeholder="请输入..."></Input>
-          </FormItem>
-          <FormItem label="状态：">
-            <Select v-model="pageApi.status" placeholder="请选择" style="width:150px">
-                  <Option v-for="item in statusData" :key="item.value" :value="item.value">{{ item.name }}</Option>
-              </Select>
-          </FormItem>
-          <FormItem label="最近更新人：">
-            <Input type="text" v-model="pageApi.updateUser" placeholder="请输入..."></Input>
-          </FormItem>
-          <FormItem label="更新时间：">
-            <DatePicker type="daterange" v-model="dateValue" :clearable="false" :options="dateOption" placement="bottom-end" placeholder="选择日期"></DatePicker>
-          </FormItem>
-          <FormItem>
-            <Button type="warning" @click="resetFilter">清除</Button>
-          </FormItem>
-        </Form> -->
-      <Form :mode="pageApi" :label-width="100" inline>
+      <Form :mode="pageApi" :label-width="90" inline>
         <FormItem label="标题：">
           <Input type="text" v-model="pageApi.title" placeholder="请输入..."></Input>
         </FormItem>

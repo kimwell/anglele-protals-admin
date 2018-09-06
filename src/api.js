@@ -1,4 +1,3 @@
-export const excelBaseUrl = 'http://tbxoss.oss-cn-hangzhou.aliyuncs.com/';
 
 // WebSocket链接
 let host = window.location.host;
@@ -9,17 +8,12 @@ export let exportExcel = ''
 if (process.env.NODE_ENV == 'development') {
   ws = 'ws://192.168.0.251/websocket';
   commHost = 'http://192.168.0.252:8080'
-  exportExcel = 'http://192.168.0.164:8080/export.jsp'
 } else {
   ws = 'wss://' + host + '/websocket';
   exportExcel = 'http://' + host + ':8080/export.jsp'
 }
 
 export const uploadApi = commHost + '/api/file/upload';
-
-// export const exportExcel ='http://'+ host + ':8080/export.jsp'
-// export const exportExcel = commHost + '/export.jsp'
-
 
 /**
  * 登录

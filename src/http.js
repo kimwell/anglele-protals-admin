@@ -8,7 +8,7 @@ import Qs from 'qs'
 // axios 配置
 // axios.defaults.timeout = 20000;
 if (process.env.NODE_ENV == 'development')
-axios.defaults.baseURL = 'http://192.168.0.252:8080'; //配置接口地址
+    axios.defaults.baseURL = 'http://192.168.0.252:8080'; //配置接口地址
 // axios.defaults.baseURL = 'http://192.168.0.160:8080'; //配置接口地址-胡
 // axios.defaults.baseURL = 'http://192.168.0.241:8080'; //配置接口地址陈
 // axios.defaults.baseURL = 'http://192.168.0.134:8080'; //配置接口地址-杭
