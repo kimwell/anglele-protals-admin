@@ -2,23 +2,45 @@
   <div>
     <Card title="广告位管理">
       <Button slot="extra" type="success" @click="openModel(false)">新增广告位</Button>
-      <Form :mode="pageApi" :label-width="90" inline>
+      <!-- <Form :mode="pageApi" :label-width="90" inline>
+          <FormItem label="标题：">
+            <Input type="text" v-model="pageApi.title" placeholder="请输入..."></Input>
+          </FormItem>
+          <FormItem label="广告位代码：">
+            <Input type="text" v-model="pageApi.placeCode" placeholder="请输入..."></Input>
+          </FormItem>
+          <FormItem label="状态：">
+            <Select v-model="pageApi.status" placeholder="请选择" style="width:150px">
+                  <Option v-for="item in statusData" :key="item.value" :value="item.value">{{ item.name }}</Option>
+              </Select>
+          </FormItem>
+          <FormItem label="最近更新人：">
+            <Input type="text" v-model="pageApi.updateUser" placeholder="请输入..."></Input>
+          </FormItem>
+          <FormItem label="更新时间：">
+            <DatePicker type="daterange" v-model="dateValue" :clearable="false" :options="dateOption" placement="bottom-end" placeholder="选择日期"></DatePicker>
+          </FormItem>
+          <FormItem>
+            <Button type="warning" @click="resetFilter">清除</Button>
+          </FormItem>
+        </Form> -->
+      <Form :mode="pageApi" :label-width="100" inline>
         <FormItem label="标题：">
           <Input type="text" v-model="pageApi.title" placeholder="请输入..."></Input>
         </FormItem>
         <FormItem label="广告位代码：">
           <Input type="text" v-model="pageApi.placeCode" placeholder="请输入..."></Input>
         </FormItem>
-        <FormItem label="状态：">
-          <Select v-model="pageApi.status" placeholder="请选择" style="width:150px">
-                  <Option v-for="item in [{name: '启用',value: '1'},{name: '禁用',value: '2'}]" :key="item.value" :value="item.value">{{ item.name }}</Option>
-                </Select>
-        </FormItem>
         <FormItem label="最近更新人：">
           <Input type="text" v-model="pageApi.updateUser" placeholder="请输入..."></Input>
         </FormItem>
+        <FormItem label="状态：">
+          <Select v-model="pageApi.status" style="width: 100px;">
+            <Option v-for="item in statusData" :value="item.value" :key="item.value">{{ item.name }}</Option>
+          </Select>
+        </FormItem>
         <FormItem label="更新时间：">
-          <DatePicker type="daterange" v-model="dateValue" :clearable="false" :options="dateOption" placement="bottom-end" placeholder="选择日期"></DatePicker>
+          <DatePicker type="daterange" placement="bottom-end" v-model="dateValue" placeholder="选择日期" style="width: 200px"></DatePicker>
         </FormItem>
         <FormItem>
           <Button type="warning" @click.native="resetFilter">清除</Button>
@@ -75,7 +97,7 @@
         </FormItem>
         <FormItem label="状态">
           <RadioGroup v-model="dataApi.status">
-            <Radio v-for="(item,index) in  [{value: '1',name: '启用'},{value: '2',name: '禁用'}]" :key="index" :label="item.value">
+            <Radio v-for="(item,index) in  statusData" :key="index" :label="item.value">
               <span>{{item.name}}</span>
             </Radio>
           </RadioGroup>
@@ -106,12 +128,12 @@
         ref: 'form' + new Date().getTime(),
         loading: false,
         pageApi: {
-          placeCode: '',
-          title: '',
-          status: '',
-          updateUser: '',
-          startTime: '',
-          endTime: ''
+          placeCode: "",
+          title: "",
+          status: "",
+          updateUser: "",
+          startTime: "",
+          endTime: ""
         },
         dateOption: {
           shortcuts: [{
@@ -147,6 +169,13 @@
         dateValue: ["", ""],
         isEdit: false,
         show: false,
+        statusData: [{
+          name: '启用',
+          value: "1"
+        }, {
+          name: '禁用',
+          value: "2"
+        }],
         dataApi: {
           title: '',
           src: '',
@@ -216,10 +245,14 @@
       //  清除筛选
       resetFilter() {
         this.dateValue = ['', ''];
-        Object.keys(this.pageApi).forEach(key => {
-          this.pageApi[key] = '';
-        })
-        this.pageApi.status = '';
+        this.pageApi = {
+          placeCode: "",
+          title: "",
+          status: "",
+          updateUser: "",
+          startTime: "",
+          endTime: ""
+        }
       },
       openModel(isEdit, item) {
         this.isEdit = isEdit;
