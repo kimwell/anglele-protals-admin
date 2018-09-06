@@ -99,27 +99,27 @@
                 let contnetHeight = winHeight - headerHeight - 64;
                 this.contentHeight = contnetHeight;
             },
-            getUserInfo() {
-                this.$http.post(this.api.getUser).then(res => {
-                    if (res.code === 1000) {
-                        // this.$store.commit(types.SET_USER_INFO, res.data);
-                        document.addEventListener('visibilitychange', () => {
-                            let isHidden = document.hidden;
-                            if (isHidden) {
-                                this.isFocus = false;
-                            } else {
-                                this.isFocus = true;
-                                document.title = this.titleInit;
-                                window.clearInterval(this.stl);
-                                if (!this.isNotice) {
-                                    this.notify(this.msg)
-                                }
-                            }
-                        });
-                        this.initScoket();
-                    }
-                })
-            },
+            // getUserInfo() {
+            //     this.$http.post(this.api.getUser).then(res => {
+            //         if (res.code === 1000) {
+            //             this.$store.commit(types.SET_USER_INFO, res.data);
+            //             document.addEventListener('visibilitychange', () => {
+            //                 let isHidden = document.hidden;
+            //                 if (isHidden) {
+            //                     this.isFocus = false;
+            //                 } else {
+            //                     this.isFocus = true;
+            //                     document.title = this.titleInit;
+            //                     window.clearInterval(this.stl);
+            //                     if (!this.isNotice) {
+            //                         this.notify(this.msg)
+            //                     }
+            //                 }
+            //             });
+            //             this.initScoket();
+            //         }
+            //     })
+            // },
             //  退出登录
             loginout(data) {
                 this.$store.commit(types.LOGOUT, data);
@@ -128,7 +128,7 @@
         },
         created() {
             this.setActiveMenu();
-            this.getUserInfo();
+            // this.getUserInfo();
         },
         mounted() {
             this.$refs.menu.updateActiveName();

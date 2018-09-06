@@ -8,12 +8,9 @@ import Qs from 'qs'
 // axios 配置
 // axios.defaults.timeout = 20000;
 if (process.env.NODE_ENV == 'development')
-    // axios.defaults.baseURL = 'http://47.97.191.14'
-    axios.defaults.baseURL = 'http://192.168.0.251:90'
-// axios.defaults.baseURL = 'http://111.231.134.170'
-// axios.defaults.baseURL = 'http://192.168.0.164:8080'; //配置接口地址-胡
-// axios.defaults.baseURL = 'http://192.168.0.135:8080'; //配置接口地址-王
-// axios.defaults.baseURL = 'http://192.168.0.163:8080'; //配置接口地址
+axios.defaults.baseURL = 'http://192.168.0.252:8080'; //配置接口地址
+// axios.defaults.baseURL = 'http://192.168.0.160:8080'; //配置接口地址-胡
+// axios.defaults.baseURL = 'http://192.168.0.241:8080'; //配置接口地址陈
 // axios.defaults.baseURL = 'http://192.168.0.134:8080'; //配置接口地址-杭
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'; //配置请求头
 axios.defaults.withCredentials = true;
@@ -24,7 +21,7 @@ axios.interceptors.request.use(config => {
     // 所有请求带上token验证
     if (store.state.authorization) {
         config.headers.common['authorization'] = store.state.authorization;
-        config.headers.common['loginId'] = store.state.loginId;
+        // config.headers.common['loginId'] = store.state.loginId;
     }
     config.data = Qs.stringify(config.data);
     return config;

@@ -16,7 +16,7 @@ Vue.use(Router);
 if (Vue.ls.get('authorization_bg')) {
     store.commit(types.LOGIN, {
         authorization: Vue.ls.get('authorization_bg'),
-        loginId: Vue.ls.get('loginId_bg')
+        // loginId: Vue.ls.get('loginId_bg')
     })
 }
 
@@ -63,6 +63,10 @@ const router = new Router({
                     name: 'nconfig',
                     component: resolve => require(['@/views/news/nconfig/index'], resolve)
                 }]
+            },{
+                path: 'adManagement',
+                name: 'adManagement',
+                component: resolve => require(['@/views/adManagement/index'], resolve)
             }]
         },
         {

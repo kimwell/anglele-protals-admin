@@ -28,16 +28,13 @@
                         <Col class-name="col" span="24">暂无数据</Col>
                     </Row>
                 </div>
-                <Page class="page-count" size="small" :total="totalCount" show-total :current="apiData.currentPage" :page-size="apiData.pageSize" @on-change="changePage"></Page>
+                <Page class="page-count" size="small" :total="totalCount" show-total :current="apiData.pageIndex" :page-size="apiData.pageSize" @on-change="changePage"></Page>
             </div>
         </Card>
         <Modal v-model="show" :title="isEdit?`编辑${title}`:`添加${title}`" :closable="false" :mask-closable="false">
             <Form :label-width="80" :ref="ref" :model="itemApi" :rules="rules">
                 <FormItem label="分类名称" prop="name">
                     <Input type="text" v-model="itemApi.name" size="small" placeholder="请输入..."></Input>
-                </FormItem>
-                <FormItem label="分类排序" class="ivu-form-item-required">
-                    <Input type="text" v-model="itemApi.orderIndex" size="small" placeholder="请输入..."></Input>
                 </FormItem>
                 <FormItem label="备注说明" prop="remark">
                     <Input type="text" v-model="itemApi.remark" size="small" placeholder="请输入..."></Input>
@@ -68,7 +65,7 @@
                     remark: ''
                 },
                 apiData: {
-                    currentPage: 1,
+                    pageIndex: 1,
                     pageSize: 10
                 },
                 rules: {
@@ -88,29 +85,25 @@
                 if (isEdit = isEdit) {
                     this.editItem = item || {};
                     this.itemApi = {
-                        id: item.id,
                         name: item.name,
-                        orderIndex: item.orderIndex,
                         remark: item.remark
                     }
                 } else {
                     this.itemApi = {
-                        id: '',
                         name: '',
-                        orderIndex: '',
                         remark: ''
                     }
                 }
                 this.show = true;
             },
             changePage(page) {
-                this.apiData.currentPage = page;
+                this.apiData.pageIndex = page;
                 this.getList();
             },
             getList() {
-                this.$http.post(this.api.findArticleTypePage, this.apiData).then(res => {
+                this.$http.post(this.api.articleCategoryPage, this.apiData).then(res => {
                     if (res.code === 1000) {
-                        this.list = res.data.list;
+                        this.list = res.data.data;
                         this.totalCount = res.data.totalCount
                     }
                 })
@@ -128,7 +121,7 @@
                                 params.orderIndex = this.itemApi.orderIndex;
                                 params.remark = this.itemApi.remark;
                             }
-                            let apiUrl = this.isEdit ? this.api.saveAndUpadteArticleType : this.api.saveAndUpadteArticleType;
+                            let apiUrl = this.isEdit ? this.api.saveArticleInfo : this.api.saveArticleInfo;
                             this.$http.post(apiUrl, params).then(res => {
                                 if (res.code === 1000) {
                                     this.getList();
@@ -156,7 +149,7 @@
                         let params = {
                             id: item.id
                         }
-                        this.$http.post(this.api.removeArticleType, params).then(res => {
+                        this.$http.post(this.api.deleteArticleInfoById, params).then(res => {
                             if (res.code === 1000) {
                                 this.getList();
                                 this.$Message.success('删除成功')

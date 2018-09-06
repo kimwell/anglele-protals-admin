@@ -1,11 +1,11 @@
 <template>
     <div class="wrapper">
         <div class="sign-in">
-            <h1>钢刚好超管后台管理系统</h1>
+            <h1>安基利尔后台管理系统</h1>
             <div class="form-item">
                 <div class="form-item-content">
                     <div class="el-input">
-                        <input v-model="formInline.mobile" @keyup.enter="keyHandle"  placeholder="管理员账号" type="text" class="el-input__inner" >
+                        <input v-model="formInline.phone" @keyup.enter="keyHandle"  placeholder="管理员账号" type="text" class="el-input__inner" >
                     </div>
                 </div>
             </div>
@@ -29,9 +29,8 @@
         data() {
             return {
                 formInline: {
-                    mobile: '',
-                    password: '',
-                    flag: 1
+                    phone: '',
+                    password: ''
                 },
                 isLoading: false
             }
@@ -39,7 +38,7 @@
         computed: {
             // 是否填写完整登录账号密码？
             valid() {
-                return this.formInline.mobile != '' && this.formInline.password != ''
+                return this.formInline.phone != '' && this.formInline.password != ''
             }
         },
         methods: {
@@ -56,8 +55,8 @@
                     this.$http.post(this.api.login, this.formInline).then(res => {
                         if (res.code === 1000) {
                             this.setUser({
-                                authorization: res.data.authorization,
-                                loginId: res.data.loginId
+                                authorization: res.data.token
+                                // loginId: res.data.loginId
                             });
                             this.$Notice.success({
                                 title: '登录成功！',

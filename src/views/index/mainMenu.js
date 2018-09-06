@@ -32,4 +32,13 @@ export default [{
             name: 'nconfig'
         }
     }]
+}, {
+    name: '广告位管理',
+    icon: 'icon-xinwen',
+    children: [{
+        name: '广告位管理',
+        router: {
+            name: 'adManagement'
+        }
+    }]
 }]
