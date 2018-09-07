@@ -81,24 +81,24 @@ export const changeStatus = '/sys/article/changeStatus'
 /**
  * 广告位分页列表
  */
-export const findAdverList = '/sys/advertisement/findAdverList'
+export const findAdverList = '/sys/adv/findAdverList'
 /**
  * 广告位保存
  */
-export const saveAdver = '/sys/advertisement/saveAdver'
+export const saveAdver = '/sys/adv/saveAdver'
 
 /**
  * 广告位编辑
  */
-export const updateAdver = '/sys/advertisement/updateAdver'
+export const updateAdver = '/sys/adv/updateAdver'
 
 /**
  * 广告位删除
  */
-export const delAdver = '/sys/advertisement/delAdver'
+export const delAdver = '/sys/adv/delAdver'
 
 
 /**
  * 广告位启用禁用
  */
-export const forbidAdver = '/sys/advertisement/forbidAdver'
+export const forbidAdver = '/sys/adv/forbidAdver'

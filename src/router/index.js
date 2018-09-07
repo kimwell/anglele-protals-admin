@@ -76,6 +76,14 @@ const router = new Router({
                 requireAuth: true
             },
             component: resolve => require(['@/views/login/index'], resolve),
+        },
+        {
+            path: '/test',
+            name: 'test',
+            meta: {
+                requireAuth: true
+            },
+            component: resolve => require(['@/views/test/index'], resolve),
         }
     ],
     scrollBehavior(to, from, savedPosition) {

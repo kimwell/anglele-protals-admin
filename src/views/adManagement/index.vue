@@ -14,8 +14,8 @@
         </FormItem>
         <FormItem label="状态：">
           <Select v-model="pageApi.status" style="width: 100px;">
-            <Option v-for="item in statusData" :value="item.value" :key="item.value">{{ item.name }}</Option>
-          </Select>
+              <Option v-for="item in statusData" :value="item.value" :key="item.value">{{ item.name }}</Option>
+            </Select>
         </FormItem>
         <FormItem label="更新时间：">
           <DatePicker type="daterange" placement="bottom-end" v-model="dateValue" placeholder="选择日期" style="width: 200px"></DatePicker>
@@ -85,6 +85,16 @@
         </FormItem>
         <FormItem label="排序：" prop="sortIndex">
           <Input type="text" v-model="dataApi.sortIndex" placeholder="请输入..."></Input>
+        </FormItem>
+        <FormItem label="url：">
+          <Input type="text" v-model="dataApi.url" placeholder="请输入..."></Input>
+        </FormItem>
+        <FormItem label="打开方式：">
+          <RadioGroup v-model="dataApi.openType">
+            <Radio v-for="(item,index) in  [{id: '0',name:'当前页'},{id: '1',name:'新窗口打开'}]" :key="index" :label="item.id">
+              <span>{{item.name}}</span>
+            </Radio>
+          </RadioGroup>
         </FormItem>
       </Form>
       <div slot="footer">
@@ -161,7 +171,9 @@
           sortIndex: '',
           width: '',
           height: '',
-          status: '1'
+          status: '1',
+          url: '',
+          openType: '0'
         },
         editItem: {},
         rules: {
@@ -243,17 +255,21 @@
             sortIndex: item.sortIndex.toString(),
             width: item.width,
             height: item.height,
-            status: item.status.toString()
+            status: item.status.toString(),
+            openType: item.openType,
+            url: item.url
           }
         } else {
-          this.itemApi = {
+          this.dataApi = {
             title: '',
             src: '',
             placeCode: '',
             sortIndex: '',
             width: '',
             height: '',
-            status: '1'
+            status: '1',
+            openType: '0',
+            url: ''
           }
         }
         this.show = true;
@@ -284,6 +300,8 @@
                 this.$Message.success(this.isEdit ? '编辑成功' : '保存成功');
                 this.show = false;
                 this.resetData();
+              } else {
+                this.$Message.error(res.message)
               }
             })
           } else {
