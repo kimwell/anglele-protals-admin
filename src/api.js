@@ -7,7 +7,7 @@ let commHost = ''
 export let exportExcel = ''
 if (process.env.NODE_ENV == 'development') {
   ws = 'ws://192.168.0.251/websocket';
-  commHost = 'http://192.168.0.252:8080'
+  commHost = 'http://192.168.0.182:8080'
 } else {
   ws = 'wss://' + host + '/websocket';
   exportExcel = 'http://' + host + ':8080/export.jsp'

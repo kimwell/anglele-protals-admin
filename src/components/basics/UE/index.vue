@@ -71,9 +71,9 @@
         methods: {
             //  文件上传处理
             handleSuccess(res,file) {
-                let pres = JSON.parse(res);
-                let path = 'http://tbxoss.oss-cn-hangzhou.aliyuncs.com'
-                this.imageList.push(path + pres[0].url);
+                // let pres = JSON.parse(res);
+                // let path = 'http://tbxoss.oss-cn-hangzhou.aliyuncs.com'
+                this.imageList.push(res.data);
             },
             //  文件格式
             handleFormatError(file) {

@@ -1,7 +1,6 @@
 <template>
   <div class="upload-wrapper">
-    <Upload :show-upload-list="false" :headers="ajaxHead" :action="api.uploadApi" :format="['jpg','jpeg','png']" :max-size="2048" :on-success="handleSuccess" :on-format-error="handleFormatError" :on-exceeded-size="handleMaxSize" :before-upload="setLoading"
-      :on-error="ctryErr">
+    <Upload :show-upload-list="false" :headers="ajaxHead" :action="apis" :format="['jpg','jpeg','png']" :max-size="2048" :on-success="handleSuccess" :on-format-error="handleFormatError" :on-exceeded-size="handleMaxSize" :before-upload="setLoading" :on-error="ctryErr">
       <Button type="primary" :loading="loading" icon="ios-cloud-upload-outline">上传图片</Button>
     </Upload>
     <div class="upload-img-list">
@@ -49,6 +48,9 @@
       }
     },
     computed: {
+      apis() {
+        return this.api.uploadApi
+      },
       ajaxHead() {
         return {
           authorization: this.$store.state.authorization
@@ -112,7 +114,8 @@
       handlePrev(index) {
         this.show = true;
         this.currentImg = this.imgSrc[index];
-      }
+      },
+
     },
     created() {
       if (this.value) {
